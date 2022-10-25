@@ -1,0 +1,61 @@
+{% import "macros/head.html" as head_macros -%}
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<title>{%- block title %}{{ config.title }}{% endblock title -%}</title>
+
+{{ head_macros::head(config=config) }}
+
+{%- if config.generate_rss %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") | safe }}">
+{% endif -%}
+
+{%- if config.extra.favicon %}
+<link rel="shortcut icon" type="{{ config.extra.favicon_mimetype | default(value="image/x-icon") }}" href="{{ config.extra.favicon | safe }}">
+{% endif -%}
+{%- block extra_head %}
+{% endblock extra_head -%}
+
+<div id="container">
+
+<header>
+    <div class="title">{{ section.title | safe }}</div>
+    <div class="tagline">"Quality First!"</div>
+</header>
+
+<hr class="hr-thin">
+
+
+<div class="content">
+    {% block content %}
+    {{ section.content | safe }}
+    {% endblock content -%}
+</div>
+
+<div id="carousel">
+    <!-- TODO -->
+</div>
+
+<div id="snippets">
+    <!-- TODO -->
+</div>
+
+<div id="index">
+    <div class="index-heading">Index</div>
+    <div class="index-table">
+        <div class="index-table-header index-row">
+            <div class="index-cell index-date">Date</div>
+            <div class="index-cell index-link">Link</div>
+            <div class="index-cell index-button">Button</div>
+        </div>
+        {%- for page in section.pages -%}
+        <div class="index-row">
+            <div class="index-cell index-date"> {{ page.date }}</div>
+            <div class="index-cell index-link">~\<a href="{{ page.permalink | safe }}">{{ page.slug }}</a></div>
+            <div class="index-cell index-button">button</div>
+        </div>
+        {% endfor -%}
+    </div>
+</div>
+</div>

@@ -1,0 +1,11 @@
+base_url = "https://acmesf.com"
+title = "ACME SF"
+
+compile_sass = true
+
+build_search_index = false
+
+[markdown]
+highlight_code = true
+
+[extra]

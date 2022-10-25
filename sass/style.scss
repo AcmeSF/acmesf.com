@@ -1,0 +1,89 @@
+#container {
+    margin-left: 17px;
+    margin-top: 17px;
+    max-width: 518px;
+}
+
+body {
+    font: 13px "Courier Prime";
+}
+
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: #a133cc; // TODO: pick this more intentionally?
+}
+a:hover {
+    text-decoration: underline;
+}
+a:link {
+    color: #3366CC;
+}
+
+header {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.tagline {
+    font-style: italic;
+}
+
+.content {
+    /* TODO: figure out why this isn't the right thickness */
+    border-bottom: 2px dashed #C6C6C6;
+    line-height: 15px;
+}
+
+.index-heading {
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.index-table {
+    font-size: 12px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    border: 1px solid black;
+
+    .index-table-header.index-row {
+        background: #E2E2E2;
+        font-weight: bold;
+        border: 1px solid #000000;
+        margin: -1px -1px;
+    }
+    .index-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        border-bottom: 1px solid #CACACA;
+        height: 28px;
+
+        .index-cell {
+            margin: 5px 5px;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+        
+        .index-link {
+            flex-grow: 4;
+        }
+    }
+}
+
+.hr-thin {
+    border-top: 1px solid black;
+    border-bottom: 0;
+}
