@@ -53,7 +53,7 @@
         <div class="index-row">
             <div class="index-cell index-date"> {{ page.date }}</div>
             <div class="index-cell index-link">~\<a href="{{ page.permalink | safe }}">{{ page.slug }}</a></div>
-            <div class="index-cell index-button">button</div>
+            <div class="index-cell index-button"><a href="{{ page.permalink | safe }}"><img src="{{ get_url(path="img/button.svg") }}" class="index-button-img"></a></div>
         </div>
         {% endfor -%}
     </div>
