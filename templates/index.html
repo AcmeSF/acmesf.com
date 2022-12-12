@@ -11,6 +11,9 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") | safe }}">
 {% endif -%}
 
+<script type="text/javascript" src="{{ get_url(path='js/carousel.js') }}" | safe }}"></script>
+
+
 {%- if config.extra.favicon %}
 <link rel="shortcut icon" type="{{ config.extra.favicon_mimetype | default(value="image/x-icon") }}" href="{{ config.extra.favicon | safe }}">
 {% endif -%}
@@ -26,19 +29,33 @@
 
 <hr class="hr-thin">
 
-
+<div class="panels">
+<div class="panel">
 <div class="content">
     {% block content %}
     {{ section.content | safe }}
     {% endblock content -%}
 </div>
 
-<div id="carousel">
-    <!-- TODO -->
-</div>
-
 <div id="snippets">
     <!-- TODO -->
+</div>
+</div>
+
+<div id="carousel panel" class="carousel">
+    {% set gallerydata = load_data(path="content/gallery.yaml") %}
+    <div class="carousel-buttons">
+    {%- for galleryitem in gallerydata -%}
+        <div class="carousel-button carousel-group-" id="carousel-button-{{ loop.index }}">{{ loop.index }}</div>
+    {% endfor -%}
+    </div>
+    {%- for galleryitem in gallerydata -%}
+    <div class="carousel-content carousel-group-" id="carousel-content-{{ loop.index }}">
+        <img src="{{ get_url(path=galleryitem.url) }}">
+        <div class="caption">{{ galleryitem.caption }}</div>
+    </div>
+    {% endfor -%}
+</div>
 </div>
 
 <div id="index">
