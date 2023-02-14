@@ -23,18 +23,17 @@
 <div id="container">
 
 <header>
-    <div class="title">{{ section.title | safe }}</div>
+    <div class="title">{{ config.title | safe }}</div>
     <div class="tagline">"Quality First!"</div>
 </header>
 
 <hr class="hr-thin">
 
+{% block content %}
 <div class="panels">
 <div class="panel">
 <div class="content">
-    {% block content %}
     {{ section.content | safe }}
-    {% endblock content -%}
 </div>
 
 <div id="snippets">
@@ -86,3 +85,4 @@
     </div>
 </div>
 </div>
+{% endblock content -%}
