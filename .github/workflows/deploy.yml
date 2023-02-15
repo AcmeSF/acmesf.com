@@ -1,0 +1,24 @@
+name: Deploy
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy_job:
+    name: Deploy Job
+    steps:
+    - name: Zola build
+      uses: taiki-e/install-action@v2
+      with:
+        tool: zola@0.16.1
+      run: |
+        zola build
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+        if_key_exists: fail
+    - name: rsync over SSH
+      run: rsync -av public/ gh-deploy@acmesf.com:
