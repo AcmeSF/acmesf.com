@@ -8,10 +8,11 @@ jobs:
   deploy_job:
     name: Deploy Job
     steps:
-    - name: Zola build
+    - name: Install Zola
       uses: taiki-e/install-action@v2
       with:
         tool: zola@0.16.1
+    - name: Zola Build
       run: |
         zola build
     - name: Install SSH key
