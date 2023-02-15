@@ -21,4 +21,5 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
         if_key_exists: fail
     - name: rsync over SSH
-      run: rsync -av public/ gh-deploy@acmesf.com:
+      run: |
+        rsync -av public/ gh-deploy@acmesf.com:
