@@ -17,7 +17,7 @@ function carousel_do(groupid, tab) {
     )) {
         button.classList.remove('carousel-button-selected');
     }
-    document.getElementById(`carousel-button-${groupid}${tab}`).classList.add('carousel-button-selected');
+    document.getElementById(`carousel-button-${groupid}-${tab}`).classList.add('carousel-button-selected');
 
     // mark content divs as hidden
     for (const content of document.getElementsByClassName(
@@ -25,7 +25,7 @@ function carousel_do(groupid, tab) {
     )) {
         content.classList.add('carousel-invisible');
     }
-    document.getElementById(`carousel-content-${groupid}${tab}`).classList.remove('carousel-invisible');
+    document.getElementById(`carousel-content-${groupid}-${tab}`).classList.remove('carousel-invisible');
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
